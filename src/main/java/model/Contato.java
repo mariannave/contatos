@@ -5,9 +5,7 @@ public class Contato {
 	String email;
 	String telefone;
 	
-	public Contato(){
-		
-	}
+	public Contato(){}
 	
 	public String getNome() {
 		return nome;
@@ -27,11 +25,5 @@ public class Contato {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-	@Override
-	public String toString() {
-		return "Contato [nome=" + nome + "]";
-	}
-	
 	
 }

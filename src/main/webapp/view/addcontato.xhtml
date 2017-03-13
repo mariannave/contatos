@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:body>
+		<h1>Novo contato</h1>
+		<h:form>
+			<h:outputLabel for="nome" value="Nome: " />
+			<h:inputText id="nome" value="#{contatoBean.contato.nome}" required="true">
+				<f:validateLength maximum="50"/>
+			</h:inputText>
+			<h:outputLabel for="email" value="E-mail: " />
+			<h:inputText id="email" value="#{contatoBean.contato.email}" required="true">
+				<f:validateLength maximum="30"/>
+			</h:inputText>
+			<h:outputLabel for="telefone" value="Telefone: " />
+			<h:inputText id="telefone" value="#{contatoBean.contato.telefone}" required="true">
+				<f:validateLength maximum="15"/>
+			</h:inputText>
+			
+			<h:commandButton value="Adicionar" action="#{contatoBean.cadastrar}"/>
+		
+		</h:form>
+	</h:body>
+</html>

@@ -6,7 +6,7 @@ import java.util.List;
 public class Agenda {
 	List<Contato> contatos;
 	
-	private Agenda() {
+	public Agenda() {
 		this.contatos = new ArrayList<Contato>();
 	}
 
@@ -22,4 +22,7 @@ public class Agenda {
 		this.contatos.add(contato);
 	}
 
+	public void removerContato(Contato contato) {
+			this.contatos.remove(contato);
+	}
 }
