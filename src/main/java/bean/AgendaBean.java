@@ -26,7 +26,6 @@ public class AgendaBean {
 	}
 
 	public void remover(Contato contato) {
-		System.out.println("Removendo o contato");
 		this.contatos.remove(contato);
 	}
 	

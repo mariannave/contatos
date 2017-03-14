@@ -6,24 +6,55 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+	<h:head>
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+	</h:head>
+
 	<h:body>
-		<h1>Novo contato</h1>
-		<h:form>
-			<h:outputLabel for="nome" value="Nome: " />
-			<h:inputText id="nome" value="#{contatoBean.contato.nome}" required="true">
-				<f:validateLength maximum="50"/>
-			</h:inputText>
-			<h:outputLabel for="email" value="E-mail: " />
-			<h:inputText id="email" value="#{contatoBean.contato.email}" required="true">
-				<f:validateLength maximum="30"/>
-			</h:inputText>
-			<h:outputLabel for="telefone" value="Telefone: " />
-			<h:inputText id="telefone" value="#{contatoBean.contato.telefone}" required="true">
-				<f:validateLength maximum="15"/>
-			</h:inputText>
-			
-			<h:commandButton value="Adicionar" action="#{contatoBean.cadastrar}"/>
-		
-		</h:form>
+	
+		<div class="container">
+			<h:form class="form-horizontal">
+				<h:panelGroup rendered="#{not contatoBean.edita}">
+					<h1>Novo contato</h1>
+				</h:panelGroup>
+				<h:panelGroup  rendered="#{contatoBean.edita}">
+					<h1>Editar contato</h1>
+				</h:panelGroup>
+				
+				
+				<h:panelGrid >
+					<h:panelGroup class="form-group">
+						<h:outputLabel for="nome" value="Nome: " />
+						<h:inputText id="nome" value="#{contatoBean.contato.nome}" required="true" class="form-control">
+							<f:validateLength maximum="50"/>
+						</h:inputText>
+					</h:panelGroup>
+					<h:panelGroup class="form-group">
+						<h:outputLabel for="email" value="E-mail: " />
+						<h:inputText id="email" value="#{contatoBean.contato.email}" required="true" class="form-control">
+							<f:validateLength maximum="30"/>
+						</h:inputText>
+					</h:panelGroup>
+					<h:panelGroup class="form-group">
+						<h:outputLabel for="telefone" value="Telefone: " />
+						<h:inputText id="telefone" value="#{contatoBean.contato.telefone}" required="true" class="form-control">
+							<f:validateLength maximum="15"/>
+						</h:inputText>
+					</h:panelGroup>
+				</h:panelGrid>
+				<div class="row">
+					<div class="col-xs-2"> 
+						<h:panelGroup rendered="#{not contatoBean.edita}">
+		 					<h:commandButton value="Adicionar" action="#{contatoBean.cadastrar}"  class="btn btn-primary"/> 
+						</h:panelGroup>
+						<h:panelGroup  rendered="#{contatoBean.edita}">
+							<h:commandButton value="Salvar" action="#{contatoBean.salvar}" class="btn btn-primary"/>
+						</h:panelGroup>
+					</div>
+						<h:commandButton value="Cancelar" action="listar" immediate="true" class="btn btn-danger"/>
+
+				</div>
+				</h:form>
+		</div>
 	</h:body>
 </html>

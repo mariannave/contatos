@@ -9,11 +9,20 @@ import model.Contato;
 @ManagedBean(name="contatoBean")
 @SessionScoped
 public class ContatoBean {
-	Contato contato = new Contato();
+	private Contato contato = new Contato();
 	
 	@ManagedProperty(value="#{agendaBean}")
 	AgendaBean agenda;
+	private boolean edita;
 	
+	public boolean isEdita() {
+		return edita;
+	}
+
+	public void setEdita(boolean edita) {
+		this.edita = edita;
+	}
+
 	public ContatoBean(){}
 	
 	public void setAgenda(AgendaBean bean){
@@ -27,12 +36,15 @@ public class ContatoBean {
 	public String cadastrar() {
 		
 		this.agenda.cadastrar(this.getContato());
-		this.setContato(new Contato());
-		
-		System.out.println("Cadastrou usuario");
-		
+		this.setContato(new Contato());		
 		return "listar?redirect-facet=true";
-}
+	}
+	
+	public String salvar() {
+		this.setEdita(false);
+		this.contato = new Contato();
+		return "listar?redirect-facet=true";
+	}
 
 	public Contato getContato() {
 		return contato;
@@ -43,9 +55,8 @@ public class ContatoBean {
 	}
 	
 	public String editar(Contato contato){
-
-		System.out.println("Editando contato");
-		
+		this.setEdita(true);
+		this.contato = contato;		
 		return "addcontato?redirect-facet=true";
 	}
 }
